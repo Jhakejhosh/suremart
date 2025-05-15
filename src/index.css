@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&family=Nunito+Sans&family=Outfit:wght@100;200;300;800&family=Playfair+Display&family=Poppins:wght@300&family=Roboto&family=Urbanist&display=swap');
+
+
+@import "tailwindcss";
+
+@theme {
+    --color-banner-pink: rgb(255, 153, 221);
+    --color-banner-orange: rgb(255, 166, 77);
+    --color-banner-blue: rgb(153, 153, 255);
+    --color-banner-green: rgb(102, 204, 102);
+    --color-transparent-blue: rbga(153, 153, 255, 0.2);
+    --color-number-orange: #ffd9b3;
+    --color-number-blue: #b3d9ff;
+    --color-number-green: #b3e6b3;
+    --color-number-violet: #ccccff;
+    --color-dark-transparent: rgba(0, 0, 0, 0.8)
+}
+
+
+*{
+    font-family: 'Montserrat', Sans-Serif;
+}
+html {
+    scroll-behavior: smooth;
+}
