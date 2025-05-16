@@ -1,7 +1,7 @@
 
 import { IconType } from "react-icons"
 import {FiSettings} from "react-icons/fi"
-import {IoBagCheckOutline, IoHelp} from "react-icons/io5"
+import {IoBagCheckOutline, IoHelp, IoHeartOutline} from "react-icons/io5"
 
 
 interface navMenuType {
@@ -23,6 +23,12 @@ export const navMenu: navMenuType[] = [
         icon: IoBagCheckOutline,
         menu: "My Order",
         link: "/order"
+    },
+    {
+        id: 3,
+        icon: IoHeartOutline,
+        menu: "Wishlist",
+        link: "/wishlist"
     },
     {
         id: 4,

@@ -45,7 +45,7 @@ const Cart = () => {
         })
       }
       <div className="relative w-full bg-white  py-6">
-        <strong className="w-full text-lg">CART SUMMARY</strong>
+        <strong className="w-full text-[16px]">CART SUMMARY</strong>
         <div className="flex justify-between items-center py-6 text-[16px]">
             <p className="font-semibold">Subtotal:</p>
             <p>${total.toFixed(2)}</p>

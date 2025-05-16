@@ -12,7 +12,7 @@ const Profile = () => {
 
   return (
     <>
-      <div className="relative border-2 border-gray-300 p-3 rounded-sm">
+      <div className="relative border-2 border-gray-300 p-3 rounded-sm cursor-pointer">
         <span onClick={() => setShowMenu(!showMenu)}><CiUser/></span>
         {user && <span className="absolute right-1 bottom-1 w-3 h-3 rounded-full bg-green-500"></span>}
       </div>

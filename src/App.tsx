@@ -4,6 +4,8 @@ import AuthListner from "./components/AuthListner"
 import { Slide, ToastContainer } from "react-toastify"
 import ProtectedRoute from "./utils/ProtectedRoute"
 
+
+
 //using lazy loading to load route components
 const Home = React.lazy(() => import ("./pages/Home"))
 const Login = React.lazy(() => import ("./pages/Login"))

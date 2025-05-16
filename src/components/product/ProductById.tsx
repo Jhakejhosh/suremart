@@ -2,11 +2,13 @@ import { useParams } from "react-router-dom"
 import { ProductType, useGetProductsQuery } from "../../redux/apiSlice";
 import { useState } from "react";
 import {LiaStar, LiaStarHalfAltSolid, LiaStarSolid, LiaShippingFastSolid} from "react-icons/lia"
+import {IoHeartOutline, IoHeartSharp} from "react-icons/io5"
 import {PiKeyReturn} from "react-icons/pi"
 import {IoMdClose} from "react-icons/io"
 import Button from "../../utils/Button";
-import { useAppDispatch } from "../../hooks/reduxHook";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHook";
 import { addToCart } from "../../redux/cartSlice";
+import { addToWishlist, setWishlist } from "../../redux/wishlistSlice";
 import { toast } from "react-toastify";
 import { capitalisedFirstLetter } from "../../utils/CapitalisedFirstLetter";
 
@@ -19,6 +21,7 @@ const ProductById = () => {
     const productImg = productId?.images[0]
 
     const dispatch = useAppDispatch()
+    const {wishlistPresent} = useAppSelector(state => state.wishlist)
 
     console.log(productId)
 
@@ -32,6 +35,10 @@ const ProductById = () => {
     const addItemtocart = (productId: ProductType) => {
         dispatch(addToCart(productId))
         toast.success("Added to cart successfully")
+    }
+    const addWishlist = (productId: ProductType) => {
+        dispatch(addToWishlist(productId))
+        toast.success("Successfully added to wishlist")
     }
 
     const renderStars = (rating: number|undefined) => {
@@ -52,7 +59,7 @@ const ProductById = () => {
 
   return (
     <div className="pt-22 relative px-4 md:px-30 lg:px-50">
-        <div className="lg:flex justify-between items-center">
+        <div className="lg:flex justify-between items-center lg:bg-white lg:p-4 lg:mt-8">
             <figure className="w-full">
                 {
                     productId?.images?.length === 3 ? (
@@ -80,9 +87,14 @@ const ProductById = () => {
                         productId?.brand : `${capitalisedFirstLetter(productId?.category)} shopping`
                     } | {capitalisedFirstLetter(productId?.category)}</p></div>
                 </div>
-                <div className="py-4 flex items-center">
-                    <span className="flex mr-2 text-xl">{renderStars(productId?.rating)}</span>
-                    <div>({productId?.rating.toFixed(1)} rating)</div>
+                <div className="py-4 flex items-center justify-between cursor-pointer">
+                    <div className="flex items-center">
+                        <span className="flex mr-2 text-xl">{renderStars(productId?.rating)}</span>
+                        <div>({productId?.rating.toFixed(1)} rating)</div>
+                    </div>
+                    { wishlistPresent ? 
+                    <span className="text-3xl text-banner-blue"><IoHeartSharp/></span> :
+                    <span className="text-3xl text-banner-blue"  onClick={() => addWishlist(productId!)}><IoHeartOutline/></span>}
                 </div>
                 <div>
                     <p className="text-gray-500 text-[15px]">{productId?.description}</p>
