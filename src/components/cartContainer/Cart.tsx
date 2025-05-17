@@ -48,9 +48,9 @@ const Cart = () => {
         <strong className="w-full text-[16px]">CART SUMMARY</strong>
         <div className="flex justify-between items-center py-6 text-[16px]">
             <p className="font-semibold">Subtotal:</p>
-            <p>${total.toFixed(2)}</p>
+            <p>${total?.toFixed(2)}</p>
         </div>
-        <Button label={`Proceed to checkout ($${total.toFixed(2)})`}/>
+        <Button label={`Proceed to checkout ($${total?.toFixed(2)})`}/>
       </div>
     </div>
   )

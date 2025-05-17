@@ -4,7 +4,8 @@ interface WishlistItemType {
     id: number,
     price: number,
     thumbnail: string,
-    title: string
+    title: string,
+    stock: number
 }
 
 interface WishlistState {
@@ -27,9 +28,12 @@ const wishlistSlice = createSlice({
         },
         setWishlist: (state, action) => {
             state.wishlistPresent = !action.payload
+        },
+        removeFromWishlist: (state, action) => {
+            state.wishlist = state.wishlist.filter(item => item.id !== action.payload)
         }
     }
 })
 
-export const {addToWishlist, setWishlist} = wishlistSlice.actions
+export const {addToWishlist, setWishlist, removeFromWishlist} = wishlistSlice.actions
 export default wishlistSlice.reducer

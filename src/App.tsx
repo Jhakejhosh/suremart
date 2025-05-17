@@ -13,6 +13,7 @@ const Register = React.lazy(() => import ("./pages/Register"))
 const ProductDetails = React.lazy(() => import ("./pages/ProductDetails"))
 const Account = React.lazy(() => import ("./pages/Account"))
 const Order = React.lazy(() => import ("./pages/Order"))
+const Wishlist = React.lazy(() => import ("./pages/Wishlist"))
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
         <Route element={<ProtectedRoute/>}>
            <Route path="/account" element={<Account/>}/>
            <Route path="/order" element={<Order/>}/>
+           <Route path="/wishlist" element={<Wishlist/>}/>
         </Route>
       </Routes> 
     </Suspense> 

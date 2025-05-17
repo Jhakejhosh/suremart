@@ -8,12 +8,12 @@
     --color-banner-orange: rgb(255, 166, 77);
     --color-banner-blue: rgb(153, 153, 255);
     --color-banner-green: rgb(102, 204, 102);
-    --color-transparent-blue: rbga(153, 153, 255, 0.2);
+    --color-transparent-blue: rbga(153, 153, 255, 0.9);
     --color-number-orange: #ffd9b3;
     --color-number-blue: #b3d9ff;
     --color-number-green: #b3e6b3;
     --color-number-violet: #ccccff;
-    --color-dark-transparent: rgba(0, 0, 0, 0.8)
+    --color-dark-transparent: rgba(0, 0, 0, 0.7)
 }
 
 
