@@ -10,7 +10,7 @@ const AddressItems = () => {
     const {user} = useAppSelector(state => state.auth)
     const dispatch = useAppDispatch()
 
-    const handleRemoveAddress = (id: number) => {
+    const handleRemoveAddress = (id: string|null) => {
         dispatch(removeAddress(id))
         toast.info("Address removed from address book")
     }
@@ -22,7 +22,7 @@ const AddressItems = () => {
                 {addressItems.map(item => {
                     const {id, city, address, state, phoneNumber} = item;
                     return (
-                        <div key={id}>
+                        <div key={id} className="mb-6 last:mb-0">
                             <p>{user?.displayName}</p>
                             <p>{address}</p>
                             <p>{city}, {state}</p>

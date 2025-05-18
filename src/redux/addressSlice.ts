@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-interface AddressFormType {
+export interface AddressFormType {
     address: string,
     city: string,
     state: string,
@@ -9,11 +9,11 @@ interface AddressFormType {
 }
 
 export interface AddressDetailsType {
-    id: number,
+    id: string | null,
     address: string,
     city: string,
     state: string,
-    phoneNumber: number|null,
+    phoneNumber: number,
     information: string
 }
 
@@ -31,25 +31,21 @@ const addressSlice = createSlice({
     name: "address",
     initialState,
     reducers: {
-        setShowAddress: (state, action) => {
+        setShowAddress: (state, action: PayloadAction<boolean>) => {
             state.showAddressForm = action.payload
         },
-        addAddress: (state, action: PayloadAction<AddressFormType>) => {
-            state.addressItems.push({
-                id: state.addressItems.length + 1,
-                address: action.payload.address,
-                city: action.payload.city,
-                state: action.payload.state,
-                phoneNumber: action.payload.phoneNumber,
-                information: action.payload.information
-            })
+        addAddress: (state, action: PayloadAction<AddressDetailsType>) => {
+            state.addressItems.push(action.payload)
             state.showAddressForm = false
         },
         removeAddress: (state, action) => {
             state.addressItems = state.addressItems.filter(item => item.id !== action.payload)
+        },
+        setAddress: (state, action) => {
+            state.addressItems = action.payload
         }
     }
 })
 
-export const {setShowAddress, addAddress, removeAddress} = addressSlice.actions
+export const {setShowAddress, addAddress, removeAddress, setAddress} = addressSlice.actions
 export default addressSlice.reducer

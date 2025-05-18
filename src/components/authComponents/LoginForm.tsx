@@ -32,7 +32,7 @@ const LoginForm = () => {
     } catch (error) {
       console.log(error)
     }
-    navigate('/')
+    navigate("/")
   }
 
   return (

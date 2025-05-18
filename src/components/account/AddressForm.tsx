@@ -3,21 +3,43 @@ import { useAppDispatch, useAppSelector } from '../../hooks/reduxHook'
 import Button from '../../utils/Button'
 import { addAddress } from '../../redux/addressSlice'
 import { toast } from 'react-toastify'
+import { addDoc, collection } from 'firebase/firestore'
+import { db } from '../../firebase/config'
 
 const AddressForm = () => {
 
     const {showAddressForm} = useAppSelector(state => state.address)
+    const {user} = useAppSelector(state => state.auth)
     const dispatch = useAppDispatch()
 
     const [address, setAddress] = useState('')
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState<number|null>(null)
+    const [phoneNumber, setPhoneNumber] = useState<number>(0)
     const [information, setInformation] = useState('')
 
-    const handleAddAddress = (e: React.FormEvent) => {
+    const handleAddAddress = async(e: React.FormEvent) => {
         e.preventDefault()
-        dispatch(addAddress({address, city, state, phoneNumber, information}))
+        try {
+            const addressDetail = {
+                address: address, 
+                city: city, 
+                state: state, 
+                phoneNumber: phoneNumber, 
+                information: information
+            }
+            //Save to firestore
+           await addDoc(collection(db, "Addresses"), addressDetail) 
+            
+            // Save to Redux
+            dispatch(addAddress({
+                id: user!.id,
+                ...addressDetail
+            }))
+
+        } catch (error) {
+            toast.error(`${error}`)
+        }
         toast.success("Address successfully added")
     }
 

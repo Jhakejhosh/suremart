@@ -1,6 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit"
 
 interface UserType {
+    id: string | null,
     displayName: string | null,
     email: string | null,
 }
