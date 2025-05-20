@@ -13,18 +13,18 @@ const AddressBook = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    //if(user) {
-    //const q = query(collection(db, "Addresses"), where("userId", "==", user.id))
-    const unSubscribe = onSnapshot(collection(db, "Addresses"), (snapshot) => {
+    if(user) {
+    const q = query(collection(db, "Addresses"), where("id", "==", user?.id))
+    const unSubscribe = onSnapshot(q, (snapshot) => {
       const addressData = snapshot.docs.map(doc => ({
         id: doc.id, ...doc.data()
       })) as AddressDetailsType[];
       dispatch(setAddress(addressData))
-      console.log(addressData)
+      console.log(q)
       console.log(user?.id)
     })
-    return () => unSubscribe()
-  }, [])
+    return () => unSubscribe()}
+  }, [user])
 
   return (
     <div className="w-full border-2 border-gray-100 rounded-sm mt-8 md:mt-0">

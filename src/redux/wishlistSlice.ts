@@ -23,7 +23,7 @@ const wishlistSlice = createSlice({
     initialState,
     reducers: {
         addToWishlist: (state, action) => {
-            state.wishlist.push({...action.payload})
+            state.wishlist.push({...action.payload})  
             state.wishlistPresent = true
         },
         setWishlist: (state, action) => {

@@ -8,7 +8,7 @@ import { db } from '../../firebase/config'
 
 const AddressForm = () => {
 
-    const {showAddressForm} = useAppSelector(state => state.address)
+    const {showAddressForm, addressItems} = useAppSelector(state => state.address)
     const {user} = useAppSelector(state => state.auth)
     const dispatch = useAppDispatch()
 
@@ -36,6 +36,8 @@ const AddressForm = () => {
                 id: user!.id,
                 ...addressDetail
             }))
+            console.log(user?.id)
+            console.log(addressItems)
 
         } catch (error) {
             toast.error(`${error}`)

@@ -69,7 +69,8 @@ const ProductById = () => {
                                 {
                                     productId?.images.map((img, index) => (
                                         <figure key={index} onClick={() => selectImage(img)} className="bg-gray-200 
-                                        mr-4 last:mr-0 rounded-sm md:mr-0 cursor-pointer">
+                                        mr-4 last:mr-0 rounded-sm md:mr-0 cursor-pointer 
+                                        hover:border-2 hover:border-banner-blue ">
                                             <img src={img} alt="img" width={80} loading="lazy"/>
                                         </figure>
                                     ))
