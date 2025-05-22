@@ -17,7 +17,7 @@ const CategoryList = () => {
                             <div key={id} className="bg-white md:mr-8 last:mr-0
                             py-4 px-2 rounded-sm cursor-pointer hover:transition-transform
                             md:py-3 md:px-10 mr-2">
-                                <figure className="flex justify-center items-center bg-gray-100 rounded-sm p-6">
+                                <figure className="flex justify-center items-center p-2 w-full">
                                     <img src={img} alt={title} width={60}/>
                                 </figure>
                                 <p className="text-center font-semibold font text-[16px] pt-2">{title}</p>

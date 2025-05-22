@@ -123,7 +123,7 @@ const ProductById = () => {
                 <div className="">
                     <strong>Reviews</strong>
                     <p className="text-sm pt-4 text-gray-500
-                    cursor-pointer hover:text-banner-blue" onClick={() => setShowReview(true)}><i>Click to see reviews</i></p>
+                    cursor-pointer hover:text-banner-blue" onClick={() => setShowReview(true)}><i>Click here to see reviews</i></p>
                     {showReview && <div className="bg-dark-transparent fixed z-50
                     w-full h-screen top-0 left-0 flex justify-center items-center"><div className="bg-white
                     lg:w-[30%] md:w-[70%] rounded-md shadow-md w-full fixed md:relative top-[10%] h-screen md:h-auto
