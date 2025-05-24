@@ -6,7 +6,7 @@ import AddressForm from "./AddressForm"
 
 const AccountContainer = () => {
   return (
-    <div className="pt-28 px-4 lg:px-80 relative h-screen">
+    <div className="pt-28 px-4 lg:px-80 relative h-full">
         <NavigatedContainer label="Account Overview">
            <AccountDetails/>
            <AddressBook/>

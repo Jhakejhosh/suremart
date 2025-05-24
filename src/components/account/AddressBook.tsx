@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHook'
 import AddressItems from './AddressItems'
 import NoAddress from './NoAddress'
-import { collection, onSnapshot, query, where } from 'firebase/firestore'
+import { collection, getDocs, onSnapshot, query, where } from 'firebase/firestore'
 import { db } from '../../firebase/config'
 import { AddressDetailsType, setAddress } from '../../redux/addressSlice'
 
@@ -13,18 +13,33 @@ const AddressBook = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if(user) {
-    const q = query(collection(db, "Addresses"), where("id", "==", user?.id))
-    const unSubscribe = onSnapshot(q, (snapshot) => {
-      const addressData = snapshot.docs.map(doc => ({
-        id: doc.id, ...doc.data()
-      })) as AddressDetailsType[];
-      dispatch(setAddress(addressData))
-      console.log(q)
-      console.log(user?.id)
-    })
-    return () => unSubscribe()}
-  }, [user])
+    const retrieveDataFromFirestore = async () => {
+      try {
+        if(user) {
+
+        await onSnapshot(collection(db, "Addresses"), (snapshot) => {
+          const addressData = snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+          }))
+          
+          dispatch(setAddress(addressData))
+        })
+       {/***  docRef.forEach(doc => {
+          if(doc.exists()) {
+            dispatch(setAddress({
+              id: doc.id,
+              ...doc.data()}))
+          }
+          console.log(doc.data())
+        })***/}
+      }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    retrieveDataFromFirestore()
+  }, [dispatch, user])
 
   return (
     <div className="w-full border-2 border-gray-100 rounded-sm mt-8 md:mt-0">

@@ -22,6 +22,7 @@ const AddressForm = () => {
         e.preventDefault()
         try {
             const addressDetail = {
+                uid: user!.id,
                 address: address, 
                 city: city, 
                 state: state, 
@@ -29,14 +30,14 @@ const AddressForm = () => {
                 information: information
             }
             //Save to firestore
-           await addDoc(collection(db, "Addresses"), addressDetail) 
+           const docRef = await addDoc(collection(db, "Addresses"), addressDetail) 
             
             // Save to Redux
             dispatch(addAddress({
-                id: user!.id,
+                id: docRef.id,
                 ...addressDetail
             }))
-            console.log(user?.id)
+            console.log(addressDetail)
             console.log(addressItems)
 
         } catch (error) {
