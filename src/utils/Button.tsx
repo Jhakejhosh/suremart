@@ -10,7 +10,7 @@ const Button: React.FC<ButtonType> = ({label, onClick, className}) => {
   return (
     <><button
     onClick={onClick}
-    className={`w-full bg-banner-blue text-white text-sm p-3 rounded-md 
+    className={`w-full bg-banner-blue text-white text-[15px] p-4 rounded-md 
     shadow-md font-semibold cursor-pointer ${className}`}>
         {label}</button></>
   )

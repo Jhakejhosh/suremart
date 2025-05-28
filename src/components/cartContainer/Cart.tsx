@@ -50,7 +50,7 @@ const Cart = () => {
             <p className="font-semibold">Subtotal:</p>
             <p>${total?.toFixed(2)}</p>
         </div>
-        <Button label={`Proceed to checkout ($${total?.toFixed(2)})`}/>
+        <Button label={`Proceed to checkout | $${total?.toFixed(2)}`}/>
       </div>
     </div>
   )

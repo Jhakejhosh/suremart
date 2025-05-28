@@ -17,7 +17,7 @@ const AddressBook = () => {
       try {
         if(user) {
 
-        await onSnapshot(collection(db, "Addresses"), (snapshot) => {
+        {/***const unsubscribe = await onSnapshot(collection(db, "Addresses"), (snapshot) => {
           const addressData = snapshot.docs.map(doc => ({
             id: doc.id,
             ...doc.data()
@@ -25,20 +25,23 @@ const AddressBook = () => {
           
           dispatch(setAddress(addressData))
         })
-       {/***  docRef.forEach(doc => {
+
+        unsubscribe***/}
+        const docRef = await getDocs(collection(db, "Addresses"))
+       docRef.forEach(doc => {
           if(doc.exists()) {
             dispatch(setAddress({
               id: doc.id,
               ...doc.data()}))
           }
           console.log(doc.data())
-        })***/}
+        })
       }
       } catch (error) {
         console.log(error)
       }
     }
-    retrieveDataFromFirestore()
+    () => retrieveDataFromFirestore()
   }, [dispatch, user])
 
   return (
